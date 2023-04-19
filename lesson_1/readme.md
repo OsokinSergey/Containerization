@@ -17,3 +17,14 @@ chroot GB
 ```
 Результат на рисунке.
 ![](images/pic1.png)
+
+При попытке выполнения утилиты ls получаем ошибку. Для ее устранения выполним аналогичные действия, но уже для утилиты ls. Для удобства будет выолнять их в новом окне терминала.
+
+```
+cp /bin/ls GB/bin
+ldd /bin/ls
+cp /lib/x86_64-linux-gnu/libpcre2-8.so.0 GB/lib
+cp /lib/x86_64-linux-gnu/libselinux.so.1 GB/lib
+```
+![](images/pic2.png)
+![](images/pic3.png)
