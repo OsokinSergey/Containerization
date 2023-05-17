@@ -13,3 +13,43 @@
 **Решение:** 
 
 ![](images/pic1.png)
+
+
+**Задание:** 
+- Запустить контейнер с БД, отличной(mariaDB) от mariaDB, используя инструкции на сайте: https://hub.docker.com/ 
+- Добавить в контейнер hostname такой же, как hostname системы через переменную
+- Заполнить БД данными через консоль 
+- Запустить phpmyadmin (в контейнере) и через веб проверить, что все введенные данные доступны
+
+
+**Решение:** 
+
+***Запуск экземпляра сервера mariadb***
+
+
+Создаем сеть
+```
+sudo docker network create osanetwork
+```
+Создаем котейнер 
+```
+sudo docker run --detach --network osanetwork -h $HOSTNAME --name mydb --env MARIADB_USER=osa --env MARIADB_PASSWORD=123QwE --env MARIADB_ROOT_PASSWORD=123QwE  mariadb:latest
+```
+Опции:
+
+-- detach - после запуска остаться на хосте, а не переходить в контейнер;
+
+-- network - использовать сеть, которую создали на первом шаге;
+
+![](images/pic2.png)
+
+***Подключение к MariaDB из клиента командной строки MariaDB***
+```
+sudo docker run -it --network osanetwork --rm mariadb mariadb -h mydb -u osa -p
+```
+после приглашения MariaDB вводит команду на проверку версии
+
+```
+SELECT VERSION();
+```
+![](images/pic3.png)
