@@ -44,12 +44,16 @@ sudo docker run --detach --network osanetwork -h $HOSTNAME --name mydb --env MAR
 ![](images/pic2.png)
 
 ***Подключение к MariaDB из клиента командной строки MariaDB***
+
+Следующая команда запускает еще один экземпляр контейнера mariadb для выполнения SQL-запросов:
 ```
 sudo docker run -it --network osanetwork --rm mariadb mariadb -h mydb -u osa -p
 ```
-после приглашения MariaDB вводит команду на проверку версии
+после приглашения MariaDB вводим команду для проверки версии
 
 ```
 SELECT VERSION();
 ```
 ![](images/pic3.png)
+
+
